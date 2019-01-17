@@ -84,10 +84,10 @@ sudo $gestor install python3-pip
 python3 -m pip install --user virtualenv
 
 #install Dask
-mkdir ${envPath} ${daskPath}
-cd ${envPath}
+mkdir envPath daskPath
+cd envPath
 python3 -m virtualenv daskEnv -p python3
-source ${envPath}/daskEnv/bin/activate
+source envPath/daskEnv/bin/activate
 cd daskPath
 pip install -r ${url_requirements}
 
