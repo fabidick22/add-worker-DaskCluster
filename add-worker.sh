@@ -107,5 +107,5 @@ echo -e "\n\n\n ${RED}${BOLD}Instalar requirements del entorno virtual${NONE}"
 sleep 2
 pip install -r ${url_requirements}
 
-echo -e "Run worker: ${GREEN}${BOLD}dask-worker ${arg}:9796 ${NONE}"
-echo -e "Run worker: ${GREEN}${BOLD}dask-worker ${arg}:9796 ${NONE}"
+echo -e "\n\n\n"
+echo -e "${RED}${BOLD}Run worker:${NONE} \t\n 1) ${GREEN}${BOLD}source ${envPath}/daskEnv/bin/activate  ${NONE} \t\n 2) ${GREEN}${BOLD}dask-worker ${arg}:9796 ${NONE}"
