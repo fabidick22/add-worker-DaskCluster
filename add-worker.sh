@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-usage() { 
+usage() {
     echo "Modo de uso: $0 [-i <string>] <string>" 1>&2; exit 1;
 }
 # script for arg: http://codedpoetry.com/shell-scripts-arguments/
@@ -86,7 +86,7 @@ python3 -m pip install --user virtualenv
 #install Dask
 mkdir ${envPath} ${daskPath}
 cd ${envPath}
-virtualenv daskEnv -p python3
+python3 -m virtualenv daskEnv -p python3
 source ${envPath}/daskEnv/bin/activate
 cd daskPath
 pip install -r ${url_requirements}
