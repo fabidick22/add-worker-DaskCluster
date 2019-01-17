@@ -127,4 +127,4 @@ echo -e "\n\n\n"
 echo -e "${RED}${BOLD}Run worker:${NONE} \t\n 1) ${GREEN}${BOLD}cd ${daskPath} ${NONE} \t\n 2) ${GREEN}${BOLD}source ${envPath}/daskEnv/bin/activate  ${NONE} \t\n 3) ${GREEN}${BOLD}dask-worker ${arg}:9796 ${NONE}"
 
 #delete script
-rm ./add-worker.sh
+rm ~/add-worker.sh
