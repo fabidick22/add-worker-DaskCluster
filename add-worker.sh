@@ -100,10 +100,11 @@ install_requirements(){
 
 echo -e "\n\n\n ${RED}${BOLD}Agregar IP al archivo /etc/hosts${NONE}"
 sleep 3
-hostS="\n${i}\t${arg}"
+hostS="${i}   ${arg}"
 echo "Password of user root:"
 sleep 1
 su -c "echo -e ${hostS} >> /etc/hosts"
+cat /etc/hosts
 
 echo -e "\n\n\n ${RED}${BOLD}Instalar requerimientos para PYTHON${NONE}"
 sleep 3
