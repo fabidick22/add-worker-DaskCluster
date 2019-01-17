@@ -43,6 +43,22 @@ url_requirements="https://raw.githubusercontent.com/fabidick22/add-worker-DaskCl
 daskPath=~/daskCluster
 envPath=~/virtualEnv
 
+function echo_fail {
+  # echo first argument in red
+  printf "\e[31m✘ ${1} No Installed"
+  # reset colours back to normal
+  printf "\033[0m \n"
+}
+
+# display a message in green with a tick by it
+# example
+# echo echo_fail "Yes"
+function echo_pass {
+  # echo first argument in green
+  printf "\e[32m✔ ${1} Installed"
+  # reset colours back to normal
+  printf "\033[0m \n"
+}
 
 comprobate_gpl(){
     local return_=1
@@ -83,20 +99,20 @@ install_requirements(){
 }
 
 echo -e "\n\n\n ${RED}${BOLD}Agregar IP al archivo /etc/hosts${NONE}"
-sleep 2
+sleep 3
 hostS="\n${i}\t${arg}"
 echo "Password of user root:"
 sleep 1
 su -c "echo -e ${hostS} >> /etc/hosts"
 
 echo -e "\n\n\n ${RED}${BOLD}Instalar requerimientos para PYTHON${NONE}"
-sleep 2
+sleep 3
 install_requirements
 sudo $gestor install python3-pip
 python3 -m pip install --user virtualenv
 
 echo -e "\n\n\n ${RED}${BOLD}Creando entorno virtual de PYTHON${NONE}"
-sleep 2
+sleep 3
 mkdir $envPath $daskPath
 cd $envPath
 python3 -m virtualenv daskEnv -p python3
@@ -104,8 +120,8 @@ source $envPath/daskEnv/bin/activate
 cd $daskPath
 
 echo -e "\n\n\n ${RED}${BOLD}Instalar requirements del entorno virtual${NONE}"
-sleep 2
+sleep 3
 pip install -r ${url_requirements}
 
 echo -e "\n\n\n"
-echo -e "${RED}${BOLD}Run worker:${NONE} \t\n 1) ${GREEN}${BOLD}source ${envPath}/daskEnv/bin/activate  ${NONE} \t\n 2) ${GREEN}${BOLD}dask-worker ${arg}:9796 ${NONE}"
+echo -e "${RED}${BOLD}Run worker:${NONE} \t\n 1) ${GREEN}${BOLD} cd ${daskPath} ${NONE} \t\n 1) ${GREEN}${BOLD}source ${envPath}/daskEnv/bin/activate  ${NONE} \t\n 2) ${GREEN}${BOLD}dask-worker ${arg}:9796 ${NONE}"
