@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+#colors
+NONE='\033[00m'
+RED='\033[01;31m'
+GREEN='\033[01;32m'
+YELLOW='\033[01;33m'
+PURPLE='\033[01;35m'
+CYAN='\033[01;36m'
+WHITE='\033[01;37m'
+BOLD='\033[1m'
+UNDERLINE='\033[4m'
+
 usage() {
     echo "Modo de uso: $0 [-i <string>] <string>" 1>&2; exit 1;
 }
@@ -27,7 +38,7 @@ if [ -z "${i}" ] || [ -z "${arg}" ]; then
 fi
 
 #install requirements
-tools_requirements=(git python3 make wget curl)
+tools_requirements=(python3 wget curl)
 url_requirements="https://raw.githubusercontent.com/fabidick22/add-worker-DaskCluster/master/requirements.txt"
 daskPath=~/daskCluster
 envPath=~/virtualEnv
@@ -71,24 +82,30 @@ install_requirements(){
     done
 }
 
-#echo "ip scheduler = ${i}"
-#echo "arg = ${arg}"
+echo -e "\n\n\n ${RED}${BOLD}Agregar IP al archivo /etc/hosts${NONE}"
+sleep 2
 hostS="\n${i}\t${arg}"
 echo "Password of user root:"
-sleep 2
+sleep 1
 su -c "echo -e ${hostS} >> /etc/hosts"
 
-echo "Instalar requerimientos"
+echo -e "\n\n\n ${RED}${BOLD}Instalar requerimientos para PYTHON${NONE}"
+sleep 2
 install_requirements
 sudo $gestor install python3-pip
 python3 -m pip install --user virtualenv
 
-#install Dask
+echo -e "\n\n\n ${RED}${BOLD}Creando entorno virtual de PYTHON${NONE}"
+sleep 2
 mkdir $envPath $daskPath
-cd envPath
+cd $envPath
 python3 -m virtualenv daskEnv -p python3
 source $envPath/daskEnv/bin/activate
 cd $daskPath
+
+echo -e "\n\n\n ${RED}${BOLD}Instalar requirements del entorno virtual${NONE}"
+sleep 2
 pip install -r ${url_requirements}
 
-echo $"\e[32;1m Run worker: dask-worker ${arg}:9796 \e[0m"
+echo -e "Run worker: ${GREEN}${BOLD}dask-worker ${arg}:9796 ${NONE}"
+echo -e "Run worker: ${GREEN}${BOLD}dask-worker ${arg}:9796 ${NONE}"
