@@ -2,6 +2,10 @@
 Script para configuración e instalación de requermientos de un worker de Dask-Distributed
 
 ## Ejecución
+Antes de ejecutar se tiene que agregar la url de los **requisitos** del cluster con el que se esta trabajando. <br>
+```bash
+url_requirements="https://raw.githubusercontent.com/fabidick22/add-worker-DaskCluster/master/requirements.txt"
+```
 La dirección ip del servicio de scheduler y el dominio con el cual se va hacer referencia se envia como atributos al ejecutar el script. Como se muestra en la linea 2.
 ```bash
 1| wget https://raw.githubusercontent.com/fabidick22/add-worker-DaskCluster/master/add-worker.sh
